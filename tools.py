@@ -5,14 +5,14 @@ def generate_quiz(topic: str, num_questions: int = 3):
     """Generates practice questions on a given topic."""
     return json.dumps({
         "status": "success",
-        "instruction": f"Generate a {num_questions}-question multiple-choice quiz on '{topic}' with answers and explanations at the end."
+        "instruction": f"Generate a {num_questions}-question multiple-choice quiz on '{topic}'. Format each question clearly with options A, B, C, D and include explanations at the bottom."
     })
 
 def create_summary(text_or_topic: str):
     """Creates key bullet-point study notes for a topic."""
     return json.dumps({
         "status": "success",
-        "instruction": f"Summarize '{text_or_topic}' into core concepts, key definitions, and 3 takeaway study points."
+        "instruction": f"Provide a structured study summary for '{text_or_topic}'. Include Core Concepts, Key Terms & Definitions, and 3 Practical Examples."
     })
 
 def solve_math(expression: str):
@@ -42,7 +42,7 @@ TOOLS_SCHEMA = [
                 "properties": {
                     "topic": {
                         "type": "string",
-                        "description": "The subject or topic for the quiz, e.g., 'Photosynthesis' or 'World War II'"
+                        "description": "The subject or topic for the quiz, e.g., 'Quantum Physics' or 'World History'"
                     },
                     "num_questions": {
                         "type": "integer",
@@ -80,7 +80,7 @@ TOOLS_SCHEMA = [
                 "properties": {
                     "expression": {
                         "type": "string",
-                        "description": "Math expression to evaluate, e.g., '25 * 4 + 10'"
+                        "description": "Math expression to evaluate, e.g., '145 * 12 + 80'"
                     }
                 },
                 "required": ["expression"]
